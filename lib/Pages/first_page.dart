@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/Pages/add_page.dart';
+import 'package:plant_app/Pages/view_page.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -32,6 +33,22 @@ class FirstPage extends StatelessWidget {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPlant()));
                     }, child: Text("ADD PLANTS"))),
             SizedBox(height: 30,),
+            SizedBox(
+              height: 45,
+              width: 250,
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.cyan.shade800,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      )
+                  ),
+                  onPressed: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewPlant()));
+                  }, child: Text("VIEW ALL PLANTS")),
+            )
+
 
           ],
         ),
