@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:plant_app/model/plant_model.dart';
 
 class PlantApiService {
   Future<dynamic> sendData(String name, String type, String qty, String price) async
@@ -25,5 +26,21 @@ class PlantApiService {
     else {
       throw Exception("failed to add");
     }
+  }
+
+  Future<List<Plant>> getData() async{
+    var client= http.Client();
+    var apiUrl=Uri.parse("http://localhost:3001/api/plant/view");
+
+    var response= await client.get(apiUrl);
+    if(response.statusCode==200)
+    {
+      return plantFromJson(response.body);
+    }
+    else
+    {
+      return [];
+    }
+
   }
 }
